@@ -1,4 +1,4 @@
-package com.example.musicsharing.ui.component
+package com.example.reverb.ui.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

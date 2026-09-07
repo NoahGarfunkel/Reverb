@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.musicsharing"
+    namespace = "com.example.reverb"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -13,7 +13,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.musicsharing"
+        applicationId = "com.example.reverb"
         minSdk = 28
         targetSdk = 36
         versionCode = 1

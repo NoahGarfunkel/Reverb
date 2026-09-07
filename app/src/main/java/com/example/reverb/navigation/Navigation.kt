@@ -1,4 +1,4 @@
-package com.example.musicsharing.navigation
+package com.example.reverb.navigation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -13,8 +13,8 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.example.musicsharing.data.model.Post
-import com.example.musicsharing.ui.screen.FeedScreen
+import com.example.reverb.data.model.Post
+import com.example.reverb.ui.screen.FeedScreen
 import kotlinx.serialization.Serializable
 import kotlin.time.Clock
 
@@ -22,7 +22,7 @@ import kotlin.time.Clock
 data object Feed : NavKey
 
 @Composable
-fun MusicSharingNavigation() {
+fun ReverbNavigation() {
     val backStack = rememberNavBackStack(Feed)
 
     Scaffold(

@@ -1,4 +1,4 @@
-package com.example.musicsharing
+package com.example.reverb
 
 import org.junit.Test
 

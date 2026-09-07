@@ -1,4 +1,4 @@
-package com.example.musicsharing.data.model
+package com.example.reverb.data.model
 
 import kotlin.time.Instant
 

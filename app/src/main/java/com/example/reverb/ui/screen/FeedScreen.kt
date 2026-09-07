@@ -1,8 +1,8 @@
-package com.example.musicsharing.ui.screen
+package com.example.reverb.ui.screen
 
 import androidx.compose.runtime.Composable
-import com.example.musicsharing.data.model.Post
-import com.example.musicsharing.ui.component.PostCard
+import com.example.reverb.data.model.Post
+import com.example.reverb.ui.component.PostCard
 
 @Composable
 fun FeedScreen(post: Post) {

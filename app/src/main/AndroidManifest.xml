@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -10,11 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MusicSharing">
+        android:theme="@style/Theme.Reverb">
         <activity
             android:name=".navigation.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.MusicSharing">
+            android:theme="@style/Theme.Reverb">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

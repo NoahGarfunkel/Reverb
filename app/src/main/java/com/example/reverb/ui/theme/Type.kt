@@ -1,4 +1,4 @@
-package com.example.musicsharing.ui.theme
+package com.example.reverb.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

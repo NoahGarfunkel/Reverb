@@ -1,4 +1,4 @@
-package com.example.musicsharing.ui.screen
+package com.example.reverb.ui.screen
 
 import androidx.compose.runtime.Composable
 
