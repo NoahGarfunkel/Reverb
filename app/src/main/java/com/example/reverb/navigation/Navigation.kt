@@ -9,14 +9,14 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.example.reverb.data.model.Post
 import com.example.reverb.ui.screen.FeedScreen
+import com.example.reverb.ui.viewmodel.FeedViewModel
 import kotlinx.serialization.Serializable
-import kotlin.time.Clock
 
 @Serializable
 data object Feed : NavKey
@@ -47,12 +47,8 @@ fun ReverbNavigation() {
             backStack = backStack,
             entryProvider = entryProvider {
                 entry<Feed> {
-                    val postCard = Post(
-                        username = "User1",
-                        time = Clock.System.now(),
-                        body = "This is a sample post.", likes = 10
-                    )
-                    FeedScreen(postCard)
+                    val viewModel: FeedViewModel = viewModel()
+                    FeedScreen (viewModel.posts)
                 }
             },
             modifier = Modifier.padding(innerPadding)
