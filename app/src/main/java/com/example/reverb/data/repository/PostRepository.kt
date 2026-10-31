@@ -1,9 +1,10 @@
 package com.example.reverb.data.repository
 
 import com.example.reverb.data.model.Post
+import javax.inject.Inject
 import kotlin.time.Clock
 
-class PostRepository {
+class PostRepository @Inject constructor() {
     fun getPosts(): List<Post> = listOf(
         Post(
             username = "User1",
