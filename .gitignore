@@ -3,4 +3,4 @@
 local.properties
 bin/
 obj/
-/.idea/workspace.xml
+*.user
