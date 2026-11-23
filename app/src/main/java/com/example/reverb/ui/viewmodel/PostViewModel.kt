@@ -6,7 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class FeedViewModel @Inject constructor(
+class PostViewModel @Inject constructor(
     repository: PostRepository
 ) : ViewModel() {
     val posts = repository.getPosts()

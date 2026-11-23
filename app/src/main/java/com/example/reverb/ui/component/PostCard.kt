@@ -1,5 +1,6 @@
 package com.example.reverb.ui.component
 
+import android.text.format.DateUtils
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,9 +23,7 @@ import kotlin.time.Instant
 
 @Composable
 fun PostCard(username: String, time: Instant, body: String, likes: Int) {
-    Card(Modifier
-        .fillMaxWidth()
-        .padding(horizontal = 16.dp, vertical = 8.dp)) {
+    Card(Modifier.fillMaxWidth()) {
         Column(Modifier.padding(16.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
@@ -33,8 +33,15 @@ fun PostCard(username: String, time: Instant, body: String, likes: Int) {
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Column {
-                    Text(text = username)
-                    Text(text = time.toString())
+                    Text(text = username, style = MaterialTheme.typography.titleMedium)
+
+                    Text(text = DateUtils.getRelativeTimeSpanString(
+                        time.toEpochMilliseconds(),
+                        System.currentTimeMillis(),
+                        DateUtils.SECOND_IN_MILLIS
+                        ).toString(),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
 
