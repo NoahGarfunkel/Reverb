@@ -1,3 +1,3 @@
 ﻿namespace Reverb.Api.Models;
 
-public record Post(string Username, DateTimeOffset Time, string Body, int Likes);
+public record Post(string Username, DateTime Time, string Body, int Likes);

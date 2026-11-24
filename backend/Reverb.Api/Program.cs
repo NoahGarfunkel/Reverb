@@ -1,8 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using Reverb.Api.Services;
+using Reverb.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
 builder.Services.AddOpenApi();
+
+var connectionString = builder.Configuration.GetConnectionString("ReverbDb")
+    ?? throw new InvalidOperationException("Connection string 'ReverbDb' not found.");
+
+builder.Services.AddDbContext<ReverbDbContext>(options =>
+    options.UseNpgsql(connectionString));
+builder.Services.AddScoped<PostsService>();
 
 var app = builder.Build();
 

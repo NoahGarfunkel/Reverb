@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Reverb.Api/Reverb.Api.csproj" />
+  <Project Path="Reverb.Data/Reverb.Data.csproj" Id="75790330-7cbd-4c71-897a-e9547c098324" />
 </Solution>

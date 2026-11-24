@@ -1,19 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Reverb.Api.Models;
+using Reverb.Api.Services;
 
 namespace Reverb.Api.Controllers;
 
 [ApiController]
 [Route("posts")]
-public class PostsController : ControllerBase
+public class PostsController(PostsService postsService) : ControllerBase
 {
     [HttpGet]
-    public ActionResult<IEnumerable<Post>> Get()
+    public async Task<ActionResult<IEnumerable<Post>>> Get(CancellationToken cancellationToken)
     {
-        return Ok(new[]
-        {
-            new Post("@acegickmo", DateTimeOffset.UtcNow, "First post", 10),
-            new Post("@acegickmo", DateTimeOffset.UtcNow, "Second post", 100)
-        });
+        var posts = await postsService.GetPostsAsync(cancellationToken);
+        return Ok(posts);
     }
 }
