@@ -1,18 +1,12 @@
 package com.example.reverb.data.repository
 
 import com.example.reverb.data.model.Post
+import com.example.reverb.data.network.PostApi
 import javax.inject.Inject
-import kotlin.time.Clock
 
-class PostRepository @Inject constructor() {
-    fun getPosts(): List<Post> = listOf(
-        Post(
-            username = "@acegickmo",
-            time = Clock.System.now(),
-            body = "This is a sample post.", likes = 10),
-        Post(
-            username = "@acegickmo",
-            time = Clock.System.now(),
-            body = "This is a second sample post.", likes = 100)
-    )
+class PostRepository @Inject constructor(
+    private val postApi: PostApi
+) {
+    suspend fun getPosts(): List<Post> =
+        postApi.getPosts()
 }
