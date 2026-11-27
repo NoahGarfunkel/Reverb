@@ -18,13 +18,18 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.reverb.data.model.Post
+import com.example.reverb.ui.viewmodel.PostViewModel
 
 @Composable
-fun ProfileScreen(posts: List<Post>) {
+fun ProfileScreen(viewModel: PostViewModel) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     LazyColumn(
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(12.dp),
@@ -56,7 +61,7 @@ fun ProfileScreen(posts: List<Post>) {
             }
         }
 
-        items(posts) { post ->
+        items(uiState.posts) { post ->
             ProfilePost(post)
         }
     }
