@@ -82,8 +82,9 @@ fun ReverbNavigation() {
                 snackbarHostState.showSnackbar(
                     message = message,
                     withDismissAction = true,
-                    duration = SnackbarDuration.Indefinite
+                    duration = SnackbarDuration.Long
                 )
+                viewModel.clearError()
             }
         }
 

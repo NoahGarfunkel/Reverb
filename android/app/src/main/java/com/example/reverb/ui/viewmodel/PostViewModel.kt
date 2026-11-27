@@ -15,7 +15,8 @@ import javax.inject.Inject
 
 data class PostsUiState(
     val posts: List<Post> = emptyList(),
-    val errorMessage: String? = null
+    val errorMessage: String? = null,
+    val isLoading: Boolean = false
 )
 
 @HiltViewModel
@@ -31,14 +32,24 @@ class PostViewModel @Inject constructor(
 
     fun loadPosts() {
         viewModelScope.launch {
+            if (_uiState.value.isLoading) return@launch
+
             try {
-                _uiState.value = PostsUiState(posts = repository.getPosts())
+                _uiState.update { it.copy(isLoading = true) }
+                val posts = repository.getPosts()
+                _uiState.update { it.copy(posts = posts, errorMessage = null) }
             } catch (_: IOException) {
                 _uiState.update { current ->
-                    current.copy(errorMessage = "Couldn't connect to the server.")
+                    current.copy(errorMessage = "Couldn’t load posts. Pull down to try again.")
                 }
+            } finally {
+                _uiState.update { it.copy(isLoading = false) }
             }
 
         }
+    }
+
+    fun clearError() {
+        _uiState.update { it.copy(errorMessage = null) }
     }
 }
