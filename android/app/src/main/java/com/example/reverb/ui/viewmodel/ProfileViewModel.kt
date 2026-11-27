@@ -13,18 +13,20 @@ import kotlinx.coroutines.launch
 import kotlinx.io.IOException
 import javax.inject.Inject
 
-data class PostsUiState(
+data class ProfileUiState(
     val posts: List<Post> = emptyList(),
     val errorMessage: String? = null,
     val isLoading: Boolean = false
 )
 
+private const val CURRENT_USERNAME = "@acegickmo"
+
 @HiltViewModel
-class PostViewModel @Inject constructor(
+class ProfileViewModel @Inject constructor(
     private val repository: PostRepository
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(PostsUiState())
-    val uiState: StateFlow<PostsUiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(ProfileUiState())
+    val uiState: StateFlow<ProfileUiState> = _uiState.asStateFlow()
 
     init {
         loadPosts()
@@ -36,7 +38,7 @@ class PostViewModel @Inject constructor(
 
             try {
                 _uiState.update { it.copy(isLoading = true) }
-                val posts = repository.getPosts()
+                val posts = repository.getPosts(CURRENT_USERNAME)
                 _uiState.update { it.copy(posts = posts, errorMessage = null) }
             } catch (_: IOException) {
                 _uiState.update { current ->

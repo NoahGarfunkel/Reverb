@@ -9,9 +9,11 @@ namespace Reverb.Api.Controllers;
 public class PostsController(PostsService postsService) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Post>>> Get(CancellationToken cancellationToken)
+    public async Task<ActionResult<IEnumerable<Post>>> Get(
+        [FromQuery] string? username,
+        CancellationToken cancellationToken)
     {
-        var posts = await postsService.GetPostsAsync(cancellationToken);
+        var posts = await postsService.GetPostsAsync(username, cancellationToken);
         return Ok(posts);
     }
 }
